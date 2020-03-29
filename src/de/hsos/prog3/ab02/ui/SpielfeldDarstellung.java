@@ -1,3 +1,9 @@
+/*
+ * Conways Game of Life
+ * Autor: Eric Walter
+ * Prog3 AB02 SoSe20
+ * Prof. Heiko Tapken
+ * */
 package de.hsos.prog3.ab02.ui;
 
 import de.hsos.prog3.ab02.util.Interaktionsbrett;
@@ -5,7 +11,7 @@ import de.hsos.prog3.ab02.util.Interaktionsbrett;
 public class SpielfeldDarstellung {
     private Interaktionsbrett ib;
     private static final  int seitenlaengeSpielfeld = 300;
-    private static final  int margin = 50;
+    private static final  int margin = 30;
 
     public SpielfeldDarstellung(Interaktionsbrett ib){
         this.ib = ib;

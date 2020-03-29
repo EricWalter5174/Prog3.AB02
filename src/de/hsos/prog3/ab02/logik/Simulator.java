@@ -1,3 +1,9 @@
+/*
+* Conways Game of Life
+* Autor: Eric Walter
+* Prog3 AB02 SoSe20
+* Prof. Heiko Tapken
+* */
 package de.hsos.prog3.ab02.logik;
 
 import java.util.Random;
@@ -54,7 +60,7 @@ public class Simulator implements Simulation {
             if(beiAenderung != null) {
                 beiAenderung.aktualisiere(spielfeld);
             }
-            Thread.sleep(200);
+            Thread.sleep(100);
             durchlaufNr++;
         }
     }
@@ -62,32 +68,26 @@ public class Simulator implements Simulation {
     private int berechneNachbarn(int x, int y){
         int nachbarn = 0;
             //Pruefe oben
-            if(istInnerhalbSpielfeldUndHatNachbarn(x-1, y-1)) {nachbarn++;}
-            if(istInnerhalbSpielfeldUndHatNachbarn(x, y-1)) {nachbarn++;}
-            if(istInnerhalbSpielfeldUndHatNachbarn(x+1, y-1)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndIstNachbar(x-1, y-1)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndIstNachbar(x, y-1)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndIstNachbar(x+1, y-1)) {nachbarn++;}
 
             //Pruefe Mitte
-            if(istInnerhalbSpielfeldUndHatNachbarn(x-1, y)) {nachbarn++;}
-            if(istInnerhalbSpielfeldUndHatNachbarn(x+1, y)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndIstNachbar(x-1, y)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndIstNachbar(x+1, y)) {nachbarn++;}
 
             //Pruefe unten
-            if(istInnerhalbSpielfeldUndHatNachbarn(x-1, y+1)) {nachbarn++;}
-            if(istInnerhalbSpielfeldUndHatNachbarn(x, y+1)) {nachbarn++;}
-            if(istInnerhalbSpielfeldUndHatNachbarn(x+1, y+1)) {nachbarn++;}
-        return nachbarn;
+            if(istInnerhalbSpielfeldUndIstNachbar(x-1, y+1)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndIstNachbar(x, y+1)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndIstNachbar(x+1, y+1)) {nachbarn++;}
+        return nachbarn-1;
     }
-
-    private boolean istInnerhalbSpielfeldUndHatNachbarn(int x, int y){
-        boolean istAusserhalb = false;
-        if(x < 0 || y < 0 || x >= spielfeld.length || y >= spielfeld[x].length) {istAusserhalb = true;}
-        if(istAusserhalb) {
+    
+    private boolean istInnerhalbSpielfeldUndIstNachbar(int x, int y){
+        if(x < 0 || y < 0 || x >= spielfeld.length || y >= spielfeld[x].length) {
             return false;
         }
-        if(spielfeld[x][y]) {
-            return true;
-        }
-        return false;
-
+        return spielfeld[x][y];
     }
 
     @Override
