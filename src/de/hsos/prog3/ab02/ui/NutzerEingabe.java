@@ -11,9 +11,9 @@ public class NutzerEingabe {
         this.io = io;
     }
     public int anzahlZellenDesSpielfelds(){
-        System.out.println("Anzahl der Zellen eingeben (20-100): ");
+        System.out.println("Anzahl der Zellen eingeben (10-100): ");
         int eingabe = io.leseInteger();
-        if(eingabe < konstanteZellen || eingabe > 19){
+        if(eingabe < konstanteZellen || eingabe > 9){
             return eingabe;
         }
         System.err.println("Eingabe außerhalb der Grenzen.");

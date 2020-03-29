@@ -1,6 +1,5 @@
 package de.hsos.prog3.ab02.ui;
 
-import de.hsos.prog3.ab02.logik.Simulation;
 import de.hsos.prog3.ab02.util.Interaktionsbrett;
 
 public class SpielfeldDarstellung {
@@ -16,18 +15,18 @@ public class SpielfeldDarstellung {
         int seitenlaenge = seitenlaengeSpielfeld / spielfeld.length;
         int x = margin;
         int y = margin;
-        for(int i = 0; i < spielfeld.length; i++){
-            for(int k = 0; k < spielfeld[i].length; k++){
+        for (boolean[] booleans : spielfeld) {
+            for (boolean aBoolean : booleans) {
                 Quadrat quadrat = new Quadrat(x, y, seitenlaenge);
-                if(spielfeld[i][k])
+                if (aBoolean)
                     quadrat.darstellenFuellung(ib);
                 else
                     quadrat.darstellenRahmen(ib);
 
-                x = x+seitenlaenge;
+                x = x + seitenlaenge;
             }
             x = margin;
-            y = y+seitenlaenge;
+            y = y + seitenlaenge;
         }
     }
 

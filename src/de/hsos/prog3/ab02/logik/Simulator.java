@@ -1,9 +1,5 @@
 package de.hsos.prog3.ab02.logik;
 
-import com.sun.xml.internal.bind.v2.runtime.output.StAXExStreamWriterOutput;
-import de.hsos.prog3.ab02.ui.Steuerung;
-
-import java.sql.SQLOutput;
 import java.util.Random;
 
 public class Simulator implements Simulation {
@@ -19,9 +15,7 @@ public class Simulator implements Simulation {
         for(int i = 0; i < anzahlDerZellen; i++){
             for(int k = 0; k < anzahlDerZellen; k++){
                 int randomValue = random.nextInt(100);
-                if(randomValue > wahrscheinlichkeitDerBesiedelung) {
-                    spielfeld[i][k] = true;
-                }
+                spielfeld[i][k] = randomValue > wahrscheinlichkeitDerBesiedelung;
             }
         }
         if(beiAenderung != null) {
@@ -33,10 +27,10 @@ public class Simulator implements Simulation {
     public void berechneFolgeGeneration(int berechnungsschritte) throws InterruptedException {
         int durchlaufNr = 0;
         while(durchlaufNr < berechnungsschritte){
-            Thread.sleep(300);
             for(int x = 0; x < anzahlFelder; x++){
                 for(int y = 0; y < anzahlFelder; y++){
                     int anzahlNachbarn = berechneNachbarn(x, y);
+
                     //1. Regel: Zelle mit 3 Nachbarn wird wiederbelebt
                     if(anzahlNachbarn == 3 && !spielfeld[x][y]){
                         spielfeld[x][y] = true;
@@ -57,13 +51,32 @@ public class Simulator implements Simulation {
                     }
                 }
             }
+            if(beiAenderung != null) {
+                beiAenderung.aktualisiere(spielfeld);
+            }
+            Thread.sleep(200);
             durchlaufNr++;
         }
     }
 
-    private int berechneNachbarn(int x, int y) {
-        int anzahlNachbarn = 0;
-        return anzahlNachbarn;
+    private int berechneNachbarn(int x, int y){
+        int zaehler = 0;
+            while(x >=1 && y >= 1){
+                if(
+                    spielfeld[x-1][y-1] ||
+                    spielfeld[x][y-1]   ||
+                    spielfeld[x+1][y-1] ||
+
+                    spielfeld[x-1][y]   ||
+                    spielfeld[x+1][y]   ||
+
+                    spielfeld[x-1][y+1] ||
+                    spielfeld[x][y+1]   ||
+                    spielfeld[x+1][y+1]
+                )
+                {zaehler++;}
+            }
+        return zaehler;
     }
 
     @Override
