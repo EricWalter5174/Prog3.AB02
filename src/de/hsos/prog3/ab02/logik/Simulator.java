@@ -60,23 +60,18 @@ public class Simulator implements Simulation {
     }
 
     private int berechneNachbarn(int x, int y){
-        int zaehler = 0;
+        int nachbarn = 0;
             while(x >=1 && y >= 1){
-                if(
-                    spielfeld[x-1][y-1] ||
-                    spielfeld[x][y-1]   ||
-                    spielfeld[x+1][y-1] ||
-
-                    spielfeld[x-1][y]   ||
-                    spielfeld[x+1][y]   ||
-
-                    spielfeld[x-1][y+1] ||
-                    spielfeld[x][y+1]   ||
-                    spielfeld[x+1][y+1]
-                )
-                {zaehler++;}
+                if(spielfeld[x-1][y-1]) {nachbarn++;}
+                if(spielfeld[x][y-1])   {nachbarn++;}
+                if(spielfeld[x+1][y-1]) {nachbarn++;}
+                if(spielfeld[x-1][y])   {nachbarn++;}
+                if(spielfeld[x+1][y])   {nachbarn++;}
+                if(spielfeld[x-1][y+1]) {nachbarn++;}
+                if(spielfeld[x][y+1])   {nachbarn++;}
+                if(spielfeld[x+1][y+1]) {nachbarn++;}
             }
-        return zaehler;
+        return nachbarn;
     }
 
     @Override

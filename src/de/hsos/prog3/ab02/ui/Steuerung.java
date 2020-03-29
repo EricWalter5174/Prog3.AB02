@@ -15,16 +15,14 @@ public class Steuerung implements BeiAenderung {
     }
 
     public void startDesSpiels() throws InterruptedException {
-        int i = 1;
-        int anzahlWiederholungen = 0;
+        int anzahlSchritte = 1;
         initialisierung();
         int anzahlZellen = eingabe.anzahlZellenDesSpielfelds();
         int wahrscheinlichkeit = eingabe.wahrscheinlichkeitDerBesiedelung();
         simulation.berechneAnfangsGeneration(anzahlZellen, wahrscheinlichkeit);
-        while (i > 0) {
-            i = eingabe.anzahlDerSimulationsSchritte();
-            simulation.berechneFolgeGeneration(i);
-        }
+            anzahlSchritte = eingabe.anzahlDerSimulationsSchritte();
+            simulation.berechneFolgeGeneration(anzahlSchritte);
+        darstellung.abwischen();
 
     }
     public void initialisierung(){

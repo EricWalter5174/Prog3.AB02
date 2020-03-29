@@ -1,6 +1,5 @@
 package de.hsos.prog3.ab02;
 
-import de.hsos.prog3.ab02.logik.BeiAenderung;
 import de.hsos.prog3.ab02.ui.Steuerung;
 
 public class Main {
