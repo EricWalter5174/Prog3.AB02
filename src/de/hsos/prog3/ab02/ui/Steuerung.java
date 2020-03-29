@@ -17,6 +17,7 @@ public class Steuerung implements BeiAenderung {
 
     @Override
     public void aktualisiere(boolean[][] neu) {
+        darstellung.abwischen();
         darstellung.spielfeldDarstellen(neu);
     }
 

@@ -57,10 +57,11 @@ public class Simulator implements Simulation {
                     }
                 }
             }
+
             if(beiAenderung != null) {
                 beiAenderung.aktualisiere(spielfeld);
             }
-            Thread.sleep(100);
+            Thread.sleep(150);
             durchlaufNr++;
         }
     }
@@ -80,7 +81,7 @@ public class Simulator implements Simulation {
             if(istInnerhalbSpielfeldUndIstNachbar(x-1, y+1)) {nachbarn++;}
             if(istInnerhalbSpielfeldUndIstNachbar(x, y+1)) {nachbarn++;}
             if(istInnerhalbSpielfeldUndIstNachbar(x+1, y+1)) {nachbarn++;}
-        return nachbarn-1;
+        return nachbarn;
     }
     
     private boolean istInnerhalbSpielfeldUndIstNachbar(int x, int y){

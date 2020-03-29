@@ -10,7 +10,7 @@ import de.hsos.prog3.ab02.util.EinUndAusgabe;
 
 public class NutzerEingabe {
     private static int konstanteZellen = 100;
-    private static int konstanteSchritte = 50;
+    private static int konstanteSchritte = 500;
     private EinUndAusgabe io;
 
     public NutzerEingabe(EinUndAusgabe io){
@@ -35,7 +35,7 @@ public class NutzerEingabe {
         return -1;
     }
     public int anzahlDerSimulationsSchritte(){
-        System.out.println("Anzahl der Simulationsschritte eingeben (1 - 50) [negative Zahl für Abbruch]: ");
+        System.out.println("Anzahl der Simulationsschritte eingeben (1 - 500) [negative Zahl für Abbruch]: ");
         int schritte = io.leseInteger();
         if (schritte > 1 && schritte <= konstanteSchritte) {
             return schritte;
