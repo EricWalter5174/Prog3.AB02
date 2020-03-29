@@ -13,7 +13,7 @@ public class NutzerEingabe {
     public int anzahlZellenDesSpielfelds(){
         System.out.println("Anzahl der Zellen eingeben (10-100): ");
         int eingabe = io.leseInteger();
-        if(eingabe < konstanteZellen || eingabe > 9){
+        if(eingabe <= konstanteZellen || eingabe > 9){
             return eingabe;
         }
         System.err.println("Eingabe außerhalb der Grenzen.");
@@ -31,7 +31,7 @@ public class NutzerEingabe {
     public int anzahlDerSimulationsSchritte(){
         System.out.println("Anzahl der Simulationsschritte eingeben (1 - 50) [negative Zahl für Abbruch]: ");
         int schritte = io.leseInteger();
-        if (schritte > 1 && schritte < konstanteSchritte) {
+        if (schritte > 1 && schritte <= konstanteSchritte) {
             return schritte;
         }
         System.err.println("Eingabe außerhalb der Grenzen.");

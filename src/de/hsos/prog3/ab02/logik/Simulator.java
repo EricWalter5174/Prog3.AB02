@@ -61,17 +61,33 @@ public class Simulator implements Simulation {
 
     private int berechneNachbarn(int x, int y){
         int nachbarn = 0;
-            while(x >=1 && y >= 1){
-                if(spielfeld[x-1][y-1]) {nachbarn++;}
-                if(spielfeld[x][y-1])   {nachbarn++;}
-                if(spielfeld[x+1][y-1]) {nachbarn++;}
-                if(spielfeld[x-1][y])   {nachbarn++;}
-                if(spielfeld[x+1][y])   {nachbarn++;}
-                if(spielfeld[x-1][y+1]) {nachbarn++;}
-                if(spielfeld[x][y+1])   {nachbarn++;}
-                if(spielfeld[x+1][y+1]) {nachbarn++;}
-            }
+            //Pruefe oben
+            if(istInnerhalbSpielfeldUndHatNachbarn(x-1, y-1)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndHatNachbarn(x, y-1)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndHatNachbarn(x+1, y-1)) {nachbarn++;}
+
+            //Pruefe Mitte
+            if(istInnerhalbSpielfeldUndHatNachbarn(x-1, y)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndHatNachbarn(x+1, y)) {nachbarn++;}
+
+            //Pruefe unten
+            if(istInnerhalbSpielfeldUndHatNachbarn(x-1, y+1)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndHatNachbarn(x, y+1)) {nachbarn++;}
+            if(istInnerhalbSpielfeldUndHatNachbarn(x+1, y+1)) {nachbarn++;}
         return nachbarn;
+    }
+
+    private boolean istInnerhalbSpielfeldUndHatNachbarn(int x, int y){
+        boolean istAusserhalb = false;
+        if(x < 0 || y < 0 || x >= spielfeld.length || y >= spielfeld[x].length) {istAusserhalb = true;}
+        if(istAusserhalb) {
+            return false;
+        }
+        if(spielfeld[x][y]) {
+            return true;
+        }
+        return false;
+
     }
 
     @Override

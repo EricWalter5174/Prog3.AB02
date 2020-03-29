@@ -20,9 +20,11 @@ public class Steuerung implements BeiAenderung {
         int anzahlZellen = eingabe.anzahlZellenDesSpielfelds();
         int wahrscheinlichkeit = eingabe.wahrscheinlichkeitDerBesiedelung();
         simulation.berechneAnfangsGeneration(anzahlZellen, wahrscheinlichkeit);
+
+        while (anzahlSchritte > 0) {
             anzahlSchritte = eingabe.anzahlDerSimulationsSchritte();
             simulation.berechneFolgeGeneration(anzahlSchritte);
-        darstellung.abwischen();
+        }
 
     }
     public void initialisierung(){

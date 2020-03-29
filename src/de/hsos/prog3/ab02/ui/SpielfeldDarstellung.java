@@ -4,7 +4,7 @@ import de.hsos.prog3.ab02.util.Interaktionsbrett;
 
 public class SpielfeldDarstellung {
     private Interaktionsbrett ib;
-    private static final  int seitenlaengeSpielfeld = 500;
+    private static final  int seitenlaengeSpielfeld = 300;
     private static final  int margin = 50;
 
     public SpielfeldDarstellung(Interaktionsbrett ib){
