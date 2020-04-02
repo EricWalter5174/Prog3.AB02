@@ -10,7 +10,7 @@ import de.hsos.prog3.ab02.util.Interaktionsbrett;
 
 public class SpielfeldDarstellung {
     private Interaktionsbrett ib;
-    private static final  int seitenlaengeSpielfeld = 300;
+    private static final  int seitenlaengeSpielfeld = 500;
     private static final  int margin = 30;
 
     public SpielfeldDarstellung(Interaktionsbrett ib){
@@ -29,10 +29,10 @@ public class SpielfeldDarstellung {
                 else
                     quadrat.darstellenRahmen(ib);
 
-                x = x + seitenlaenge;
+                x += seitenlaenge;
             }
             x = margin;
-            y = y + seitenlaenge;
+            y += seitenlaenge;
         }
     }
 

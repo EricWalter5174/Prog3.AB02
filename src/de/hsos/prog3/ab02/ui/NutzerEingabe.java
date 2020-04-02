@@ -9,7 +9,7 @@ package de.hsos.prog3.ab02.ui;
 import de.hsos.prog3.ab02.util.EinUndAusgabe;
 
 public class NutzerEingabe {
-    private static int konstanteZellen = 100;
+    private static int konstanteZellen = 500;
     private static int konstanteSchritte = 500;
     private EinUndAusgabe io;
 
@@ -17,7 +17,7 @@ public class NutzerEingabe {
         this.io = io;
     }
     public int anzahlZellenDesSpielfelds(){
-        System.out.println("Anzahl der Zellen eingeben (10-100): ");
+        System.out.println("Anzahl der Zellen eingeben (10 - 500): ");
         int eingabe = io.leseInteger();
         if(eingabe <= konstanteZellen || eingabe > 9){
             return eingabe;

@@ -21,7 +21,7 @@ public class Simulator implements Simulation {
         for(int i = 0; i < anzahlDerZellen; i++){
             for(int k = 0; k < anzahlDerZellen; k++){
                 int randomValue = random.nextInt(100);
-                spielfeld[i][k] = randomValue > wahrscheinlichkeitDerBesiedelung;
+                spielfeld[i][k] = randomValue < wahrscheinlichkeitDerBesiedelung;
             }
         }
         if(beiAenderung != null) {
@@ -61,7 +61,7 @@ public class Simulator implements Simulation {
             if(beiAenderung != null) {
                 beiAenderung.aktualisiere(spielfeld);
             }
-            Thread.sleep(150);
+            Thread.sleep(100);
             durchlaufNr++;
         }
     }
